@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class ButtonUI : MonoBehaviour
 {
 
-     // this is a placeholder name for the  destination scene that the will load to 
+     // this is a placeholder name for the  destinationscene that the will load to 
      
     [SerializeField] private string TargetSceneName = "WorldMapPH";
     // specifically what the button calls when clicked
