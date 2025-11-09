@@ -29,7 +29,7 @@ public class Frog : MonoBehaviour
         CheckIfPlayerLookingAt();
 
         // If looking at frog and press E, collect it
-        if (isLookingAt && Input.GetKeyDown(KeyCode.E))
+        if (isLookingAt && (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Jump")))
         {
             CollectFrog();
         }
