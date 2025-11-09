@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Asia.unity
     guid: 304a5748b784bc241be3c08d67013b21
+  - enabled: 1
+    path: Assets/Scenes/MapView.unity
+    guid: 410424f4f5184a44da1324c4a5c0923d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

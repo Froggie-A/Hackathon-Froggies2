@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class ButtonUI : MonoBehaviour
+public class WMBackButtonUI : MonoBehaviour 
 {
 
-     // this is a placeholder name for the  destinationscene that the will load to 
+     // this is a placeholder name for the  destination scene that the will load to 
      
-    [SerializeField] private string TargetSceneName = "MapView";
+    [SerializeField] private string TargetSceneName = "SampleScene";
     // specifically what the button calls when clicked
     public void LoadGameScene()
     {
@@ -18,7 +17,8 @@ public class ButtonUI : MonoBehaviour
         }
         else
         {
-            Debug.LogError(" ButtonUI Error: TargetSceneName is not set.");
+            Debug.LogError(" WMBackButtonUI Error: TargetSceneName is not set.");
         }
     }
 }
+
