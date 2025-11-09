@@ -100,3 +100,9 @@ InitTestScene*.unity*
 
 *.sln
 .DS_Store
+
+# Unity logs
+*.log
+*.log.meta
+Assets/**/Logs/**
+Logs/
