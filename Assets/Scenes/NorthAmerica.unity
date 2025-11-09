@@ -14299,7 +14299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogManager
   showGlobalCount: 0
-  totalFrogs: 5
+  totalFrogs: 4
   totalFrogsAllLevels: 3
   frogCounterText: {fileID: 346394462}
   winPanel: {fileID: 0}
