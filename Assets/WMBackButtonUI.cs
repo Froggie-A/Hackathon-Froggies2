@@ -3,10 +3,23 @@ using UnityEngine.SceneManagement;
 public class WMBackButtonUI : MonoBehaviour 
 {
 
-     // this is a placeholder name for the  destination scene that the will load to 
-     
+    // this is a placeholder name for the  destination scene that the will load to 
+
     [SerializeField] private string TargetSceneName = "SampleScene";
     // specifically what the button calls when clicked
+    private static WMBackButtonUI instance;
+
+private void Awake()
+{
+    if (instance != null)
+    {
+        Destroy(gameObject);
+        return;
+    }
+    instance = this;
+    DontDestroyOnLoad(gameObject);
+}
+
     public void LoadGameScene()
     {
         //loads the scenes
@@ -14,6 +27,7 @@ public class WMBackButtonUI : MonoBehaviour
         {
             //loads the scene that's passed in
             SceneManager.LoadScene(TargetSceneName);
+
         }
         else
         {
