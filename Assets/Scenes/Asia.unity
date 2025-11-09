@@ -53889,7 +53889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd06247120b884ba98f61c93b54d09f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogManager
-  showGlobalCount: 0
+  showGlobalCount: 1
   totalFrogs: 6
   totalFrogsAllLevels: 3
   frogCounterText: {fileID: 1137730192}

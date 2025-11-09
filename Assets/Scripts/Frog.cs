@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Frog : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Frog : MonoBehaviour
 
     [SerializeField] string interactAxisName = "Interact";
     [SerializeField] int interactButtonIndex = 2;
+    
+    // Unique ID for this frog (automatically generated)
+    private string frogID;
 
     bool isLookingAt;
     Camera playerCamera;
@@ -16,6 +20,18 @@ public class Frog : MonoBehaviour
     {
         playerCamera = Camera.main;
         if (!playerCamera) Debug.LogError("No Main Camera found! Tag your camera as MainCamera.");
+        
+        // Create unique ID based on scene and frog's name/position
+        string sceneName = SceneManager.GetActiveScene().name;
+        frogID = $"{sceneName}_{gameObject.name}_{transform.position.x}_{transform.position.z}";
+        
+        // Check if this frog was already collected
+        if (GameData.Instance != null && GameData.Instance.IsFrogCollected(frogID))
+        {
+            // This frog was already collected, destroy it immediately
+            Destroy(gameObject);
+            return;
+        }
     }
 
     void Update()
@@ -40,8 +56,25 @@ public class Frog : MonoBehaviour
 
     void CollectFrog()
     {
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        // Save to GameData
+        if (GameData.Instance != null)
+        {
+            GameData.Instance.CollectFrog(frogID, currentScene);
+        }
+        
+        // Update FrogManager UI
         var manager = FindObjectOfType<FrogManager>();
-        if (manager) manager.FrogFound(); else Debug.LogWarning("No FrogManager found in scene!");
+        if (manager)
+        {
+            manager.FrogFound();
+        }
+        else
+        {
+            Debug.LogWarning("No FrogManager found in scene!");
+        }
+        
         Destroy(gameObject);
     }
 }
