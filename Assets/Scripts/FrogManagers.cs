@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class FrogManager : MonoBehaviour
 {
     // GLOBAL COUNTER - Shared across all scenes!
@@ -19,7 +19,8 @@ public class FrogManager : MonoBehaviour
 
     [Header("UI References")]
     [Tooltip("Drag the UI Text component here")]
-    public Text frogCounterText;
+    public TextMeshProUGUI frogCounterText;
+
     
     [Tooltip("Optional: Panel to show when all frogs are found")]
     public GameObject winPanel;

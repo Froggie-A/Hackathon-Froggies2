@@ -53891,7 +53891,7 @@ MonoBehaviour:
   showGlobalCount: 0
   totalFrogs: 6
   totalFrogsAllLevels: 3
-  frogCounterText: {fileID: 0}
+  frogCounterText: {fileID: 1137730192}
   winPanel: {fileID: 0}
 --- !u!4 &2141042547
 Transform:
