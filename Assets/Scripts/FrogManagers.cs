@@ -86,15 +86,4 @@ public class FrogManager : MonoBehaviour
             winPanel.SetActive(false);
         }
     }
-
-    // Optional: Show current progress in Inspector while playing
-    void OnGUI()
-    {
-        // This shows debug info in game view (top-left corner)
-        // Remove this method if you don't want it
-        if (Application.isPlaying)
-        {
-            GUI.Label(new Rect(10, 10, 300, 20), $"DEBUG: {frogsFound}/{totalFrogs} frogs found");
-        }
-    }
 }
