@@ -4909,6 +4909,7 @@ GameObject:
   - component: {fileID: 162211418}
   - component: {fileID: 162211417}
   - component: {fileID: 162211421}
+  - component: {fileID: 162211422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4958,7 +4959,12 @@ MonoBehaviour:
   playerCamera: {fileID: 1770760861}
   mouseSmoothTime: 0.03
   cursorLock: 1
-  mouseSensitivity: 2
+  mouseXSensitivity: 3.5
+  mouseYSensitivity: 3.5
+  stickXSensitivity: 1
+  stickYSensitivity: 0.7
+  stickTurnRateDegPerSec: 140
+  stickDeadzone: 0.2
   Speed: 6
   moveSmoothTime: 0.3
   gravity: -30
@@ -4966,6 +4972,12 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  rightX: RightStickX
+  rightY: RightStickY
+  pitchLimit: 89
+  coyoteTime: 0.12
+  jumpBufferTime: 0.12
+  jumpCooldown: 0.08
   jumpHeight: 6
 --- !u!143 &162211419
 CharacterController:
@@ -5023,6 +5035,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b5ddbb2f617794a9287e360468dd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapCode
+--- !u!114 &162211422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162211415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676667a139f5f4c9ca3a2e9ae7d1fdf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  interactAxisName: Interact
+  interactButtonIndex: 2
 --- !u!1001 &162343771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18640,6 +18666,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &683543028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23115,6 +23143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &886253811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36462,6 +36492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &1442590332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40064,6 +40096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &1630905419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44331,6 +44365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &1775406869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48751,6 +48787,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7328054, y: 0.77756083, z: 0.8189256}
   m_Center: {x: -0.025816664, y: 0.07773614, z: -0.033876702}
+--- !u!1 &1953523732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953523734}
+  - component: {fileID: 1953523733}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1953523733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953523732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de331dd14be7f4779a43e1d202c2e7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamepadButtonProbe
+--- !u!4 &1953523734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953523732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.28123, y: 23.64509, z: 11.33607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1953688087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51669,6 +51749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Frog
   interactionDistance: 25
   showPrompt: 1
+  interactAxisName: Interact
+  interactButtonIndex: 3
 --- !u!65 &2049170288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53806,8 +53888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd06247120b884ba98f61c93b54d09f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogManager
+  showGlobalCount: 0
   totalFrogs: 6
-  frogCounterText: {fileID: 1137730192}
+  totalFrogsAllLevels: 3
+  frogCounterText: {fileID: 0}
   winPanel: {fileID: 0}
 --- !u!4 &2141042547
 Transform:
@@ -54396,3 +54480,4 @@ SceneRoots:
   - {fileID: 1798518862}
   - {fileID: 149845989}
   - {fileID: 787525507}
+  - {fileID: 1953523734}

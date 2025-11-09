@@ -112,15 +112,4 @@ public class FrogManager : MonoBehaviour
     {
         globalFrogsFound = 0;
     }
-
-    // Optional: Show current progress in Inspector while playing
-    void OnGUI()
-    {
-        // This shows debug info in game view (top-left corner)
-        // Remove this method if you don't want it
-        if (Application.isPlaying)
-        {
-            GUI.Label(new Rect(10, 10, 400, 20), $"DEBUG - This Level: {frogsFoundThisLevel}/{totalFrogs} | Global: {globalFrogsFound}");
-        }
-    }
 }
