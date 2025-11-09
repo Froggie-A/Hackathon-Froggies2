@@ -14277,7 +14277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogManager
   totalFrogs: 6
-  frogCounterText: {fileID: 0}
+  frogCounterText: {fileID: 346394462}
   winPanel: {fileID: 0}
 --- !u!4 &1922746777
 Transform:

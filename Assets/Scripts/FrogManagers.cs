@@ -1,20 +1,30 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class FrogManager : MonoBehaviour
 {
+    // GLOBAL COUNTER - Shared across all scenes!
+    public static int globalFrogsFound = 0;
+    
+    [Header("Display Mode")]
+    [Tooltip("Show global count across all levels, or just this level's count?")]
+    public bool showGlobalCount = false;
+    
     [Header("Level Settings")]
     [Tooltip("Set this to match the number of frogs in your level")]
     public int totalFrogs = 10;
+    
+    [Tooltip("Total frogs across ALL levels (for global display)")]
+    public int totalFrogsAllLevels = 3;
 
     [Header("UI References")]
     [Tooltip("Drag the UI Text component here")]
-    public TMPro.TextMeshProUGUI frogCounterText;
+    public Text frogCounterText;
     
     [Tooltip("Optional: Panel to show when all frogs are found")]
     public GameObject winPanel;
 
-    private int frogsFound = 0;
+    private int frogsFoundThisLevel = 0;
 
     void Start()
     {
@@ -37,14 +47,15 @@ public class FrogManager : MonoBehaviour
     // Called by Frog.cs when a frog is collected
     public void FrogFound()
     {
-        frogsFound++;
+        frogsFoundThisLevel++;
+        globalFrogsFound++;  // Increment global counter too!
         
-        Debug.Log($"Frog found! Total: {frogsFound}/{totalFrogs}");
+        Debug.Log($"Frog found! This level: {frogsFoundThisLevel}/{totalFrogs} | Global: {globalFrogsFound}");
         
         UpdateUI();
         
-        // Check if all frogs have been found
-        if (frogsFound >= totalFrogs)
+        // Check if all frogs in THIS level have been found
+        if (frogsFoundThisLevel >= totalFrogs)
         {
             AllFrogsFound();
         }
@@ -54,7 +65,16 @@ public class FrogManager : MonoBehaviour
     {
         if (frogCounterText != null)
         {
-            frogCounterText.text = $"Frogs Found: {frogsFound}/{totalFrogs}";
+            if (showGlobalCount)
+            {
+                // Show global count across all levels
+                frogCounterText.text = $"Frogs Found: {globalFrogsFound}/{totalFrogsAllLevels}";
+            }
+            else
+            {
+                // Show just this level's count
+                frogCounterText.text = $"Frogs Found: {frogsFoundThisLevel}/{totalFrogs}";
+            }
         }
     }
 
@@ -78,12 +98,29 @@ public class FrogManager : MonoBehaviour
     // Optional: Helper method to reset the level
     public void ResetLevel()
     {
-        frogsFound = 0;
+        frogsFoundThisLevel = 0;
         UpdateUI();
         
         if (winPanel != null)
         {
             winPanel.SetActive(false);
+        }
+    }
+    
+    // Optional: Reset global counter (use in main menu or game restart)
+    public static void ResetGlobalCount()
+    {
+        globalFrogsFound = 0;
+    }
+
+    // Optional: Show current progress in Inspector while playing
+    void OnGUI()
+    {
+        // This shows debug info in game view (top-left corner)
+        // Remove this method if you don't want it
+        if (Application.isPlaying)
+        {
+            GUI.Label(new Rect(10, 10, 400, 20), $"DEBUG - This Level: {frogsFoundThisLevel}/{totalFrogs} | Global: {globalFrogsFound}");
         }
     }
 }
